@@ -1,27 +1,44 @@
 function Bank() {
 
-//this.TEST_DEFUALT_BALANCE = 1000;
-this.DEFUALT_BALANCE = 0;
-this.balance = this.DEFUALT_BALANCE
-this.bankStatement = []
+  this.accountName = 'Isaac';
+  this.accountNumber = 1;
+  this.bankStatement = [];
+  this.DEFUALT_BALANCE = 1000;
+  this.balance = this.DEFUALT_BALANCE;
 }
 
-
-
 Bank.prototype.getAccountName = function () {
- return this.accountName;
+  return this.accountName;
 };
 
 Bank.prototype.getAccountNumber = function () {
- return this.accountNumber;
+  return this.accountNumber;
 };
 
-Bank.prototype.Deposit = function (amount) {
-  this.DEFUALT_BALANCE += amount;
+Bank.prototype.getBalance = function () {
+  return this.balance
 };
-Bank.prototype.withdraw = function (amount) {
-  if ((this.balance - amount) < this.DEFUALT_BALANCE) {
-  console.log('Insufficient funds');
-  return;
+
+Bank.prototype.deposit = function (damount, ddate) {
+
+  this.balance += damount
+
+  var dtransaction = {'Amount':damount, 'Date':ddate, 'Indicator':'C', 'Balance':this.balance};
+
+  this.statement.push(dtransaction)
+  console.log(this.statement)
 };
-this.balance -= amount;
+
+Bank.prototype.withdraw = function (wamount, wdate) {
+
+  this.balance -= wamount
+
+  var wtransaction = {'Amount':wamount, 'Date':wdate, 'Indicator':'D', 'Balance':this.balance};
+
+  this.statement.push(wtransaction)
+  console.log(this.statement)
+};
+
+Bank.prototype.printStatement = function () {
+  return this.BankStatement
+};
